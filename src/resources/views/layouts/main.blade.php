@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="css/price_rangs.css">
         <!-- style CSS -->
         <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     </head>
 
     <body>
