@@ -22,7 +22,13 @@
                             <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                                     placeholder="Username" required value="{{ old('name') }}">
-                                @error('name')
+
+                                    
+                                @if(Auth::user()->role === 'customer')
+                                    <h1>HAI ADMINADAWDAWDAWD</h1> 
+                                @endif
+                               
+                                    @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
