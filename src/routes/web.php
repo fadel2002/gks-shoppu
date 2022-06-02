@@ -17,10 +17,7 @@ use App\Http\Controllers\HomeController;
 */
 
 // Route::get('/', function () {
-//     return view('home', [
-//         'name' => 'fadel',
-//         'email' => 'fadelpm2002@gmail.com'
-//     ]);
+//     return view('home');
 // });
 
 Route::get('/', [HomeController::class, 'index']);
@@ -50,4 +47,4 @@ Route::get('/checkout', function () {
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

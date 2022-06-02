@@ -22,6 +22,12 @@ class RegisterController extends Controller
 
         $validated['password'] = bcrypt($validated['password']);
         
+        $validated['role'] = 'customer';
+
+        $validated['address'] = '-';
+
+        $validated['phone'] = '-';
+
         User::create($validated);
 
         return redirect('/login')->with('success', 'Registration successfull, please login');
