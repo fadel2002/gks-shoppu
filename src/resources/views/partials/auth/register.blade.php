@@ -24,9 +24,9 @@
                                     placeholder="Username" required value="{{ old('name') }}">
 
                                     
-                                @if(Auth::user()->role === 'customer')
+                                {{-- @if(Auth::user()->role === 'customer')
                                     <h1>HAI ADMINADAWDAWDAWD</h1> 
-                                @endif
+                                @endif --}}
                                
                                     @error('name')
                                     <div class="invalid-feedback">
