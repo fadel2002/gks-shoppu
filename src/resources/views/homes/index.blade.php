@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                             <div class="banner_img d-none d-lg-block">
-                                <img src="img/pvc-17-minami-nanami.png" alt="">
+                                <img src="img/pvc-17-saberaltria-pendragon-disp.png" alt="">
                                 {{-- <img src="img/banner_img.png" alt=""> --}}
                             </div>
                         </div>
