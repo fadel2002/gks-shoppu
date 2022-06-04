@@ -15,20 +15,18 @@
             <div class="col-lg-6 col-md-6">
                 <div class="login_part_form">
                     <div class="login_part_form_iner">
-                        <h3>Hello! <br>
-                            Sign up now</h3>
+                        @if(session()->has('failed'))
+                            <h3> {{ session('failed') }} </h3>
+                        @else 
+                            <h3>Hello! <br>
+                                Sign up now</h3>
+                        @endif
                         <form class="row contact_form" action="/register" method="post">
                             @csrf
                             <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                                     placeholder="Username" required value="{{ old('name') }}">
-
-                                    
-                                {{-- @if(Auth::user()->role === 'customer')
-                                    <h1>HAI ADMINADAWDAWDAWD</h1> 
-                                @endif --}}
-                               
-                                    @error('name')
+                                @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -44,6 +42,15 @@
                                 @enderror
                             </div>
                             <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"
+                                    placeholder="Phone number" required value="{{ old('phone') }}">
+                                @error('phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 form-group p_star">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password"
                                     placeholder="Password" required>
                                 @error('password')
@@ -52,10 +59,19 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="col-md-12 form-group p_star">
+                                <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="4" cols="50" 
+                                    placeholder="Home address" required>{{ old('address') }}</textarea>
+                                @error('address')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account d-flex align-items-center">
-                                    <input type="checkbox" id="f-option" name="selector">
-                                    <label for="f-option">Send me notification</label>
+                                    <input type="checkbox" id="remember" name="remember">
+                                    <label for="remember">Remember me</label>
                                 </div>
                                 <button type="submit" value="submit" class="btn_3">
                                     register

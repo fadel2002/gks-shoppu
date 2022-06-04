@@ -31,11 +31,13 @@
     </head>
 
     <body>
-        @include('partials.header')
+
+        @include('layouts.partials.header')
 
         @yield('container')
 
-        @include('partials.footer')
+        @include('layouts.partials.footer')
+
 
         <!-- jquery plugins here-->
         <!-- jquery -->

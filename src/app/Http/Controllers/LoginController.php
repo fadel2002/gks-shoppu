@@ -22,6 +22,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials))
         {
+
+            if ($request->get('remember'))
+            {
+                $user = Auth::getProvider()->retrieveByCredentials($credentials);
+                auth()->login($user, true);
+            }
+            
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
