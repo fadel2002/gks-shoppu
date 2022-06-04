@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CategoryController;
+// use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,21 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/shop', [ShopController::class, 'index']);
 Route::post('/shop', [ShopController::class, 'store']);
+
+// Route::resource('product', 'ProductController');
+Route::resource('product', ProductController::class);
+// Route::resource('order', 'OrderController')->only([
+//     'edit', 'update'
+// ]);
+Route::resource('order', OrderController::class)->only([
+    'edit', 'update'
+]);
+// Route::resource('category', 'CategoryController')->only([
+//     'show'
+// ]);
+Route::resource('category', CategoryController::class)->only([
+    'show'
+]);
 
 Route::get('/cart', function () {
     return view('cart');
