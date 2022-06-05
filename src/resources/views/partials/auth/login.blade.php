@@ -19,9 +19,15 @@
                             <h3> {{ session('success') }} </h3>
                         @elseif(session()->has('loginError'))
                             <h3> {{ session('loginError') }} </h3>
-                        @else 
-                            <h3>Welcome Back ! <br>
-                                Please Sign in now</h3>
+                        @else
+                            <h3>
+                            @error('email')
+                                Login failed!
+                            @else 
+                                Welcome Back ! <br>
+                                    Please Sign in now
+                            @enderror
+                            </h3>
                         @endif
                         <form class="row contact_form" action="\login" method="post">
                             @csrf

@@ -15,10 +15,25 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email:dns',
-            'password' => 'required'
-        ]);
+
+        $login = request()->input('email');
+        if (is_numeric($login)) 
+        {
+            $field = 'phone';
+            request()->merge([$field => $login]);
+            $credentials = $request->validate([
+                'phone' => 'required',
+                'password' => 'required'
+            ]);
+        }else 
+        {
+            $credentials = $request->validate([
+                'email' => 'required|email:dns',
+                'password' => 'required'
+            ]);
+        }
+        
+
 
         if (Auth::attempt($credentials))
         {

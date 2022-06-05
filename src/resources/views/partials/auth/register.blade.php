@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="4" cols="50" 
+                                <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="3" cols="50" 
                                     placeholder="Home address" required>{{ old('address') }}</textarea>
                                 @error('address')
                                     <div class="invalid-feedback">
