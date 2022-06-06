@@ -1,13 +1,36 @@
 @extends('layouts.master')
 
 @section('content')
+
+<style>
+    .membesar_gan{
+        transition: 0.3s linear;
+        transition-property: transform;
+    }
+    .membesar_gan:hover{
+        transform: scale(1.1);
+    }
+</style>
 <section class="product_list section_padding">
     <div class="container">
         <h3 class="mb-4">Category : {{$category_name}}</h3>
         <div class="col-lg-12">
             <div class="row align-items-center justify-content-start">
                 @forelse ($products as $product)
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="category_brand"
+                    style="position: relative;
+                    width:100%;
+                    display:flex;
+                    flex-direction:column;
+                    border: 1px solid grey;
+                    ">
+                        <div class="category_brand_title">
+                            <h2 style="text-align: center;
+                            padding: 16px;
+                            background-color:aqua;
+                            ">Asus</h2>
+                        </div>
+                    <div class="membesar_gan col-lg-3 col-sm-6">
                         <div class="single_product_item" style="border: 2px solid #E7E9ED">
                             @if (Str::contains($product->image, 'https:/'))
                                 <img src="{{$product->image}}" alt="image" style="width: 300px; height: 340px; object-fit: cover;">
@@ -31,6 +54,7 @@
                                 {{-- <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a> --}}
                             </div>
                         </div>
+                    </div>
                     </div>
                 @empty
                      <h2 class="text-center">No item</h2>

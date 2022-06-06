@@ -1,6 +1,15 @@
 @extends('layouts.master');
 
 @section('content')
+<style>
+    .membesar_gan{
+        transition: 0.3s linear;
+        transition-property: transform;
+    }
+    .membesar_gan:hover{
+        transform: scale(1.1);
+    }
+</style>
     <section class="product_list section_padding">
         <div class="container">
             <div class="row justify-content-center">
@@ -24,14 +33,15 @@
                     <div class="row align-items-center justify-content-start">
                         @forelse ($products as $key => $product)
                             <div class="col-lg-3 col-sm-6">
-                                <div class="single_product_item" style="border: 2px solid #E7E9ED">
+                                <div class="single_product_item membesar_gan" style="border: 2px solid #E7E9ED">
                                     @if (Str::contains($product->image, 'https:/'))
                                         <img src="{{$product->image}}" alt="image" style="width: 300px; height: 340px; object-fit: cover;">
                                     @else
                                         <img src="{{ asset('images/product/'.$product->image)}}" alt="image" style="width: 300px; height: 340px; object-fit: cover;">
                                     @endif
-                                    <div class="single_product_text">
-                                        <h4>{{ $product->name }}</h4>
+                                    <div class="single_product_text" style="width:100%">
+                                        <h4 style="position: relative;font-size:100%;">
+                                            {{ $product->name }}</h4>
                                         <h3>Rp {{ $product->price }}</h3>
                                         {{-- <p>{{ Auth::user()->fullname }}</p> --}}
                                         <form action="shop" method="POST" enctype="multipart/form-data">
