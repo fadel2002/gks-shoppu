@@ -24,8 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Home::where('categories_id', 20)->get();
+        $account = Home::where('a_id', 2)->get();
+        // $products = Home::where('categories_id', 20)->get();
         // dd($products);
-        return view('homes.index', compact('products'));
+        // return view('homes.index', compact('products'));
+        return view('homes.index', compact('account'));
     }
 }
