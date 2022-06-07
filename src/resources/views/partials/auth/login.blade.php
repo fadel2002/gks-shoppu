@@ -33,7 +33,7 @@
                             @csrf
                             <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}"
-                                    placeholder="Email" required>
+                                    placeholder="Email or Phone Number" required>
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}

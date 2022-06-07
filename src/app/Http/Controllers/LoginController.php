@@ -32,8 +32,6 @@ class LoginController extends Controller
                 'password' => 'required'
             ]);
         }
-        
-
 
         if (Auth::attempt($credentials))
         {
