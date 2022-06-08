@@ -72,6 +72,18 @@ class ShopController extends Controller
                 "name" => $request["name"],
                 "orders_id" => $ambil_id->id
             ]);
+        }else{
+            $banyak_lama = DB::table('orders_detail')
+            ->where('users_id', $request->users_id)
+            ->where('products_id', $request->id)
+            ->value('quantity');
+            $banyak = $banyak_lama + 1;
+            $harga = $request->price;
+            $res = $harga * $banyak;
+            $query = DB::table('orders_detail')
+            ->where('users_id', $request->users_id)
+            ->where('products_id', $request->id)
+            ->update(['quantity' => $banyak, 'total_price' => $res]);
         }
 
         // dd($query);

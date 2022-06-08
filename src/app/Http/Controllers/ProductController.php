@@ -21,7 +21,8 @@ class ProductController extends Controller
     {
         $this->authorize('isAdmin');
         $products = Product::all();
-        return view('admin.index', compact('products'));
+        $categories = Category::all();
+        return view('admin.index', compact('products', 'categories'));
     }
 
     /**

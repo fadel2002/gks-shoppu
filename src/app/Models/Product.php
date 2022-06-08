@@ -12,11 +12,11 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category', 'categories_id');
+        return $this->belongsTo('App\Models\Category', 'categories_id');
     }
 
     public function orderdetails()
     {
-        return $this->hasMany('App\OrderDetail');
+        return $this->hasMany('App\Models\OrderDetail');
     }
 }

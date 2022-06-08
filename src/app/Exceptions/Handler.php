@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\InvalidOrderException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -46,5 +47,20 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+        
+        // $this->renderable(function (InvalidOrderException $e, $request) {
+        //     return response()->view('homes.index', [], 404);
+        // });
+    
     }
+
+    // public function render($request, Exception $exception)
+    // {
+    //     if ($this->isHttpException($exception)) {
+    //         if ($exception->getStatusCode() == 404) {
+    //             return response()->view('homes.index', [], 404);
+    //         }
+    //     }
+    //     return parent::render($request, $exception);
+    // }
 }
