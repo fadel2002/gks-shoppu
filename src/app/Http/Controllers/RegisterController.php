@@ -32,7 +32,7 @@ class RegisterController extends Controller
         // $validated = $request->merge(['a_id' => $apa]);
         
         // $validated['role'] = 'customer';
-        // dd($validated);
+        dd($validated);
 
         // if (($user = User::create($validated))){
         // $ini_itu = DB::insert('insert into ACCOUNT (a_id, username, email, password, a_alamat)

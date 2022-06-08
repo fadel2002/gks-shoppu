@@ -24,7 +24,7 @@
                         <form class="row contact_form" action="/register" method="post">
                             @csrf
                             {{-- <input name="a_id" type="hidden" value="11"> --}}
-                            {{-- <input name="a_id" type="hidden" value="nextval('ACCOUNT_SEQ')"> --}}
+                            <input name="a_id" type="hidden" value=nextval('ACCOUNT_SEQ')>
                             <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username"
                                     placeholder="Username" required value="{{ old('username') }}">
