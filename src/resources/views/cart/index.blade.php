@@ -32,17 +32,15 @@
                     </div>
                     </td>
                     <td>
-                    <h5>{{$item->price}}</h5>
+                    <h5>Rp {{$item->price}}</h5>
                     </td>
                     <td>
                     <div class="product_count">
-                        <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                        <input class="input-number" type="text" value="1" min="0" max="10" name="{{$item->id}}">
-                        <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                        <input class="input-number" type="text" value="{{$item->quantity}}" min="0" max="10" name="{{$item->id}}" id="{{$item->id}}">
                     </div>
                     </td>
                     <td>
-                    <h5>{{$item->total_price}}</h5>
+                    <h5>Rp {{$item->total_price}}</h5>
                     </td>
                     </tr>
             @empty
@@ -71,7 +69,13 @@
                 <h5>Subtotal</h5>
                 </td>
                 <td>
-                <h5>$2160.00</h5>
+                    <?php 
+                    $subtotal = 0;
+                    foreach ($orders_detail as $key => $item) {
+                        $subtotal += $item->total_price;
+                    }
+                    ?>
+                <h5>Rp {{ $subtotal }}</h5>
                 </td>
             </tr>
             <tr class="shipping_area">
@@ -84,16 +88,16 @@
                 <div class="shipping_box">
                     <ul class="list">
                     <li>
-                        <a href="#">Flat Rate: $5.00</a>
+                        <a href="#">Flat Rate: Rp 19.000</a>
                     </li>
                     <li>
                         <a href="#">Free Shipping</a>
                     </li>
                     <li>
-                        <a href="#">Flat Rate: $10.00</a>
+                        <a href="#">Flat Rate: Rp 19.000</a>
                     </li>
                     <li class="active">
-                        <a href="#">Local Delivery: $2.00</a>
+                        <a href="#">Local Delivery: Rp 19.000</a>
                     </li>
                     </ul>
                     <h6>

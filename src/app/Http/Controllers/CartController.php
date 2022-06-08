@@ -32,9 +32,31 @@ class CartController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request);
+        $unc = "unclear";
+        $orders = DB::table('orders')
+                    ->select('id')
+                    ->where('users_id', Auth::user()->id)
+                    ->where('status', $unc)
+                    ->first();
 
+        $orders_detail = DB::table('orders_detail')
+                    ->where('orders_id', $orders->id)
+                    ->get();
 
+        foreach($orders_detail as $key => $item) {
+            // dd($item);
+            $id = strval($item->id);
+            $quantity = intval($request->get($id));
+            $price = $item->price;
 
+            DB::table('orders_detail')->where('id', $id)->update([
+                "quantity" => $quantity,
+                "total_price" => $quantity * $price
+            ]);
+        }
+
+        return redirect('/cart')->with('success', 'Cart updated succesfully!');
     }
 
 
