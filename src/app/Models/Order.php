@@ -10,4 +10,9 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = ["amount", "shipping_address", "order_address", "order_date", "status", "users_id"];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'users_id');
+    }
 }

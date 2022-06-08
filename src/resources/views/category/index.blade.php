@@ -28,7 +28,6 @@
                                     <input type="hidden" value="1" name="quantity">
                                     <button class="px-4 py-2 text-black bg-blue-800 rounded">Add To Cart</button>
                                 </form>
-                                {{-- <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a> --}}
                             </div>
                         </div>
                     </div>

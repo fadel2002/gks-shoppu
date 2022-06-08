@@ -14,6 +14,19 @@ services:
     networks:
       - nginx-proxy-network
 
+  mysql:
+    container_name: pbkk-mysql
+    image: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=gks-db
+    networks:
+      - nginx-proxy-network
+
 networks:
   nginx-proxy-network:
     external: true
