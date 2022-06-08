@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 // use App\Http\Controllers\ShopController;
 
 /*
@@ -43,6 +44,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/shop', [ShopController::class, 'index']);
 Route::post('/shop', [ShopController::class, 'store']);
 
+Route::get('/cart', [CartController::class, 'index']);
+Route::post('/cart', [CartController::class, 'store']);
+
 // Route::resource('product', 'ProductController');
 Route::resource('product', ProductController::class);
 // Route::resource('order', 'OrderController')->only([
@@ -58,9 +62,9 @@ Route::resource('category', CategoryController::class)->only([
     'show'
 ]);
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
 
 Route::get('/checkout', function () {
     return view('checkout');
