@@ -23,10 +23,12 @@
                         @endif
                         <form class="row contact_form" action="/register" method="post">
                             @csrf
+                            {{-- <input name="a_id" type="hidden" value="11"> --}}
+                            {{-- <input name="a_id" type="hidden" value="nextval('ACCOUNT_SEQ')"> --}}
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                                    placeholder="Username" required value="{{ old('name') }}">
-                                @error('name')
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username"
+                                    placeholder="Username" required value="{{ old('username') }}">
+                                @error('username')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -42,15 +44,6 @@
                                 @enderror
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"
-                                    placeholder="Phone number" required value="{{ old('phone') }}">
-                                @error('phone')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 form-group p_star">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password"
                                     placeholder="Password" required>
                                 @error('password')
@@ -60,9 +53,9 @@
                                 @enderror
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="3" cols="50" 
-                                    placeholder="Home address" required>{{ old('address') }}</textarea>
-                                @error('address')
+                                <textarea class="form-control @error('a_alamat') is-invalid @enderror" id="a_alamat" name="a_alamat" rows="3" cols="50" 
+                                    placeholder="Home Address" required>{{ old('a_alamat') }}</textarea>
+                                @error('a_alamat')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Account;
 
 class LoginController extends Controller
 {
@@ -15,32 +16,30 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-
         $login = request()->input('email');
-        if (is_numeric($login)) 
-        {
+        if(is_numeric($login)){
             $field = 'phone';
             request()->merge([$field => $login]);
             $credentials = $request->validate([
                 'phone' => 'required',
                 'password' => 'required'
             ]);
-        }else 
-        {
+        }else{
             $credentials = $request->validate([
                 'email' => 'required|email:dns',
                 'password' => 'required'
             ]);
         }
         
-
-
+        
         if (Auth::attempt($credentials))
         {
+            
 
             if ($request->get('remember'))
             {
                 $user = Auth::getProvider()->retrieveByCredentials($credentials);
+                dd($user);
                 auth()->login($user, true);
             }
             
