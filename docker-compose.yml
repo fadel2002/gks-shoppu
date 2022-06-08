@@ -2,7 +2,7 @@ version: "3"
 services:
   nama-service:
     container_name: gks-shoppu
-    image: dptsi/laravel-web-dev
+    image: mirzaq19/temanhewan-api
     volumes:
       - ./src:/var/www/html
     env_file: .env
@@ -15,15 +15,19 @@ services:
       - nginx-proxy-network
 
   mysql:
-    container_name: pbkk-mysql
-    image: mysql
+    container_name: mysql
+    image: mysql:latest
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "4306:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_DATABASE=gks-db
+      - MYSQL_ROOT_PASSWORD=25052002
+      - MYSQL_DATABASE=gks_db
+      - MYSQL_USER=pgn1@172.18.0.4
+      - MYSQL_PASSWORD=25052002
     networks:
       - nginx-proxy-network
 
