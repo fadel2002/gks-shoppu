@@ -5,19 +5,26 @@
     <div class="container">
       <div class="cart_inner">
         <div class="table-responsive">
-        @forelse ($dataOrders as $key => $item)   
+        @forelse ($dataOrders as $key => $item) 
+        @php
+            $sums = 0
+        @endphp
+        <h2>Order {{ $item->id }}  </h2>
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
+                <th class="col-6" scope="col">Product</th>
+                <th class="col-2" scope="col">Price</th>
+                <th class="col-2" scope="col">Quantity</th>
+                <th class="col-2" scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($dataOrderDetail as $key => $itemDua)   
+                @foreach ($dataOrderDetails as $key => $itemDua)   
                     @if($itemDua->orders_id == $item->id) 
+                    @php
+                        $sums = $sums + $itemDua->total_price
+                    @endphp
                         <tr>
                             <td>
                             <div class="media">
@@ -38,35 +45,13 @@
                             </td>
                             <td>
                             <div class="product_count">
-                                <form action="cart" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" value="{{ Auth::user()->id }}" name="users_id">
-                                    <input type="hidden" value="{{ $itemDua->id }}" name="id">
-                                    {{-- <input type="hidden" value="{{ $itemDua->name }}" name="name"> --}}
-                                    <input type="hidden" value="{{ $itemDua->price }}" name="price">
-                                    <input type="hidden" value="{{ $itemDua->quantity - 1 }}" name="quantity">
-                                    {{-- <input type="hidden" value="dec" name="idcnt"> --}}
-                                    <button class="input-number-decrement"><i class="ti-angle-down"></i></button>
-                                </form>
-                                {{-- <span class="input-number-decrement"> <i class="ti-angle-down"></i></span> --}}
-                                <input class="input-number" type="text" value="{{ $itemDua->quantity }}" name="counter" min="0" max="10">
-                                <form action="cart" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" value="{{ Auth::user()->id }}" name="users_id">
-                                    <input type="hidden" value="{{ $itemDua->id }}" name="id">
-                                    {{-- <input type="hidden" value="{{ $itemDua->name }}" name="name"> --}}
-                                    <input type="hidden" value="{{ $itemDua->price }}" name="price">
-                                    <input type="hidden" value="{{ $itemDua->quantity + 1 }}" name="quantity">
-                                    {{-- <input type="hidden" value="add" name="idcnt"> --}}
-                                    <button class="input-number-increment"><i class="ti-angle-up"></i></button>
-                                </form>
-                                {{-- <span class="input-number-increment"> <i class="ti-angle-up"></i></span> --}}
+                                {{ $itemDua->quantity }}
                             </div>
-                            </td>
-                            <td>
+                        </td>
+                        <td>
                             <h5>{{ $itemDua->total_price }}</h5>
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     @endif
                 @endforeach
               <tr>
@@ -81,6 +66,9 @@
               </tr>
             </tbody>
           </table>
+
+        @empty
+        <h4>There is no order history</h4>
         @endforelse
         </div>
       </div>

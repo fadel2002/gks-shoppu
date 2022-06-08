@@ -21,6 +21,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/cart">Shopping Cart</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history">Order history</a>
+                            </li>
                             @can('isAdmin')
                             <li class="nav-item">
                                 <a class="nav-link text-danger" href="/product">Admin</a>
