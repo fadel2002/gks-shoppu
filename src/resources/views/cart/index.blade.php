@@ -81,23 +81,20 @@
             <tr class="shipping_area">
                 <td></td>
                 <td></td>
-                <td>
-                <h5>Shipping</h5>
+                <td >                
+                    <h5>Shipping</h5>
                 </td>
                 <td>
                 <div class="shipping_box">
                     <ul class="list">
                     <li>
-                        <a href="#">Flat Rate: Rp 19.000</a>
+                        <a href="#">Bebas Ongkir: Rp 0</a>
                     </li>
                     <li>
-                        <a href="#">Free Shipping</a>
-                    </li>
-                    <li>
-                        <a href="#">Flat Rate: Rp 19.000</a>
+                        <a href="#">Next Day: Rp 30.000</a>
                     </li>
                     <li class="active">
-                        <a href="#">Local Delivery: Rp 19.000</a>
+                        <a href="#">Reguler: Rp 21.000</a>
                     </li>
                     </ul>
                     <h6>

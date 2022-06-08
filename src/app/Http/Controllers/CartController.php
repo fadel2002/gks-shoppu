@@ -54,6 +54,10 @@ class CartController extends Controller
                 "quantity" => $quantity,
                 "total_price" => $quantity * $price
             ]);
+
+            if ($quantity <= 0) {
+                DB::table('orders_detail')->where('id', $id)->delete();
+            }
         }
 
         return redirect('/cart')->with('success', 'Cart updated succesfully!');
