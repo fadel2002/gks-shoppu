@@ -15,19 +15,20 @@ services:
       - nginx-proxy-network
 
   mysql:
-    container_name: mysql
-    image: mysql:latest
+    image: mysql
     restart: unless-stopped
     tty: true
     ports:
       - "4306:3306"
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=25052002
       - MYSQL_DATABASE=gks_db
-      - MYSQL_USER=pgn1@172.18.0.4
-      - MYSQL_PASSWORD=25052002
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+      - SERVICE_TAGS = dev
+      - SERVICE_NAME = mysql
     networks:
       - nginx-proxy-network
 
