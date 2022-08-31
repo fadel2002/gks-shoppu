@@ -1,1 +1,1 @@
-# FP-PBKK_GKS-Shoppu
+GKS-Shoppu
